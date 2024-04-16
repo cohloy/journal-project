@@ -20,7 +20,7 @@ public class JournalEntry {
     public String getDateString() {
         String str = "";
         str += (new SimpleDateFormat("MMMM").format(dateCreated.getTime())) + " ";
-        str += dateCreated.get(Calendar.MONTH) + ", ";
+        str += dateCreated.get(Calendar.DAY_OF_MONTH) + ", ";
         str += dateCreated.get(Calendar.YEAR);
         return str;
     }
