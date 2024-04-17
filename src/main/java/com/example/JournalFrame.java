@@ -2,6 +2,7 @@ package com.example;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 public class JournalFrame extends JFrame {
     final private Font titleFont = new Font("Arial", Font.BOLD, 30);
     final private Font dateFont = new Font("Arial", Font.BOLD, 20);
@@ -94,7 +95,14 @@ public class JournalFrame extends JFrame {
 
         /* Action Listeners */
         viewButton.addActionListener(e -> viewButtonPressed(entry));
-        deleteButton.addActionListener(e -> deleteButtonPressed(entry, entryPanel));
+        deleteButton.addActionListener(e -> {
+            try {
+                deleteButtonPressed(entry, entryPanel);
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        });
 
         // Add components to entryPanel
         gbc.gridx = 0;
@@ -120,7 +128,7 @@ public class JournalFrame extends JFrame {
         viewFrame.initialize(entry);
     }
 
-    private void deleteButtonPressed(JournalEntry entry, JPanel entryPanel) {
+    private void deleteButtonPressed(JournalEntry entry, JPanel entryPanel) throws IOException {
         /* Get user confirmation */
         int input = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this entry?", "Select an Option", JOptionPane.YES_NO_OPTION);
         if (input == 0) {
@@ -137,7 +145,7 @@ public class JournalFrame extends JFrame {
         addFrame.initialize(this);
     }
 
-    public void addNewEntry(String text) {
+    public void addNewEntry(String text) throws IOException {
         journal.addEntry(text);
         JPanel entryPanel = createEntryPanel(journal.getEntries().get(journal.getEntries().size()-1));
         bottomPanel.add(entryPanel, 0);

@@ -8,7 +8,7 @@ public class JournalEntry {
 
     public JournalEntry(String journalText) {
         this.journalText = journalText;
-        dateCreated = Calendar.getInstance();
+        this.dateCreated = Calendar.getInstance();
     }
 
     public String getText() {
@@ -19,11 +19,20 @@ public class JournalEntry {
         return dateCreated;
     }
 
+
     public String getDateString() {
         String str = "";
         str += (new SimpleDateFormat("MMMM").format(dateCreated.getTime())) + " ";
         str += dateCreated.get(Calendar.DAY_OF_MONTH) + ", ";
         str += dateCreated.get(Calendar.YEAR);
+        return str;
+    }
+
+    @Override
+    public String toString() {
+        String str = "";
+        str += getDateString() + "\n";
+        str += journalText + "\n";
         return str;
     }
 }

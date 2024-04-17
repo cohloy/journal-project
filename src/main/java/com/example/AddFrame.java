@@ -2,6 +2,7 @@ package com.example;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 public class AddFrame extends JFrame {
     final private Font titleFont = new Font("Arial", Font.BOLD, 30);
     final private Font textFont = new Font("Arial", Font.PLAIN, 18);
@@ -34,7 +35,14 @@ public class AddFrame extends JFrame {
         /* Done Button */
         JButton doneButton = new JButton("Done");
         doneButton.setPreferredSize(new Dimension(80, 40));
-        doneButton.addActionListener(e -> doneButtonPressed());
+        doneButton.addActionListener(e -> {
+            try {
+                doneButtonPressed();
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        });
         topPanel.add(doneButton);
 
         /* Cancel Button */
@@ -79,7 +87,7 @@ public class AddFrame extends JFrame {
         //pack();
     }
 
-    private void doneButtonPressed() {
+    private void doneButtonPressed() throws IOException {
         if (textArea.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Cannot create an empty entry!");
         }
