@@ -10,7 +10,7 @@ public class Main {
         JournalBuilder builder = new JournalBuilder();
         
         /* If JSON file exists, get its entries */
-        if (new File("src/main/resources/journal.JSON").isFile()) {
+        if (new File(JournalBuilder.FILE_PATH).isFile()) {
             journal = builder.getJournal();
         }
         else {
