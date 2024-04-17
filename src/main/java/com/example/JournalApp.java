@@ -1,3 +1,5 @@
+package com.example;
+
 public class JournalApp {
     public static void main(String[] args) {
         Journal journal = new Journal();
