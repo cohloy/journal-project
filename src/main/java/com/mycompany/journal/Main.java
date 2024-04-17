@@ -1,9 +1,9 @@
-package com.example;
+package com.mycompany.journal;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class App {
+public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         Journal journal;
 

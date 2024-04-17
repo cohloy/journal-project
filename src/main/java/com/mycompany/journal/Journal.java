@@ -1,4 +1,4 @@
-package com.example;
+package com.mycompany.journal;
 
 import java.io.IOException;
 import java.util.*;
