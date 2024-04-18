@@ -74,6 +74,7 @@ public class JournalFrame extends JFrame {
         setSize(450, 600);
         setMinimumSize(new Dimension(500,300));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

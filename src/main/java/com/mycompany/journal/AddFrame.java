@@ -90,6 +90,7 @@ public class AddFrame extends JFrame {
         setSize(800, 500);
         setMinimumSize(new Dimension(500,300));
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
         setVisible(true);
         textArea.requestFocus();
     }
