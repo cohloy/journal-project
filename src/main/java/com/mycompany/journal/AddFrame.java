@@ -1,15 +1,23 @@
+/*
+ * Class: AddFrame
+ * Description: This class describes the GUI of the new entry window
+ * Author: Theodore B
+ */
 package com.mycompany.journal;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 public class AddFrame extends JFrame {
+    /* Fonts */
     final private Font titleFont = new Font("Arial", Font.BOLD, 30);
     final private Font textFont = new Font("Arial", Font.PLAIN, 18);
 
+    /* Instance Variables */
     private JTextArea textArea;
     private JournalFrame journalFrame;
 
+    /* Initialize the frame */
     public void initialize(JournalFrame frame) {
         journalFrame = frame;
 
@@ -39,7 +47,6 @@ public class AddFrame extends JFrame {
             try {
                 doneButtonPressed();
             } catch (IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         });
@@ -64,6 +71,7 @@ public class AddFrame extends JFrame {
         textArea.setOpaque(false);
         textArea.setFont(textFont);
         textArea.setForeground(Color.white);
+        textArea.setCaretColor(Color.white);
         bottomPanel.add(textArea, BorderLayout.NORTH);
 
         /* Scroll Pane */
@@ -84,22 +92,26 @@ public class AddFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setVisible(true);
         textArea.requestFocus();
-        //pack();
     }
 
+    /* Submits newly created journal entry */
     private void doneButtonPressed() throws IOException {
+        //Doesn't let user create an empty entry
         if (textArea.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Cannot create an empty entry!");
         }
+        //Add new entry to journal and close window
         else {
             journalFrame.addNewEntry(textArea.getText());
             dispose();
         }
     }
 
+    /* Cancels creation of new journal entry */
     private void cancelButtonPressed() {
         /* Get user confirmation */
         int input = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel?", "Select an Option", JOptionPane.YES_NO_OPTION);
+        //if yes, close window
         if (input == 0) {
             dispose();
         }

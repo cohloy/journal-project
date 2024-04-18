@@ -1,11 +1,18 @@
+/*
+ * Class: ViewFrame
+ * Description: This class describes the GUI for viewing a journal entry
+ * Author: Theodore B
+ */
 package com.mycompany.journal;
 
 import javax.swing.*;
 import java.awt.*;
 public class ViewFrame extends JFrame {
+    /* Fonts */
     final private Font dateFont = new Font("Arial", Font.BOLD, 30);
     final private Font textFont = new Font("Arial", Font.PLAIN, 18);
 
+    /* Initialize the frame */
     public void initialize(JournalEntry entry) {
         /* Main Panel */
         JPanel mainPanel = new JPanel();
